@@ -2,6 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://uyenhoang.github.io/site/post/expedia_python/</loc>
+    <lastmod>2017-01-27T23:05:56-05:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://uyenhoang.github.io/site/post/fm/</loc>
     <lastmod>2017-01-24T15:28:54-05:00</lastmod>
   </url>
@@ -15,14 +20,25 @@
   </url>
   
   <url>
+    <loc>https://uyenhoang.github.io/site/categories/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://uyenhoang.github.io/site/categories/misc/</loc>
+    <lastmod>2017-01-27T23:05:56-05:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://uyenhoang.github.io/site/</loc>
-    <lastmod>2017-01-24T15:28:54-05:00</lastmod>
+    <lastmod>2017-01-27T23:05:56-05:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://uyenhoang.github.io/site/post/</loc>
-    <lastmod>2017-01-24T15:28:54-05:00</lastmod>
+    <lastmod>2017-01-27T23:05:56-05:00</lastmod>
     <priority>0</priority>
   </url>
   
