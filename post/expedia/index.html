@@ -1,0 +1,1052 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  
+  <meta charset="utf-8">
+  <title></title>
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="http://example.orgcss/fonts.css">
+  
+  
+  <link rel="stylesheet" href="https://unpkg.com/purecss@0.6.1/build/pure-min.css" integrity="sha384-CCTZv2q9I9m3UOxRLaJneXrrqKwUNOzZ6NGEUMwHtShDJ+nCoiXJCAgi05KfkLGY" crossorigin="anonymous">
+  
+  
+    <link rel="stylesheet" href="https://unpkg.com/purecss@0.6.1/build/grids-responsive-min.css">
+  
+  <link rel="stylesheet" href="http://example.orgcss/custom.css">
+
+  
+  
+  <link rel="stylesheet" href="http://example.orghighlight/styles/default.css">
+  
+  <script src="http://example.orghighlight/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+  <meta name="generator" content="Hugo 0.18.1" />
+  
+  
+<script type="text/javascript"
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<script type="text/javascript"
+          src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  </script>
+  
+  <script>
+    MathJax.Hub.Config({
+      preRemoveClass: "mj",
+      tex2jax: {
+        inlineMath: [['$','$']],
+        processEscapes: true
+      },
+      CommonHTML: { linebreaks: { automatic: true } },
+      "HTML-CSS": { linebreaks: { automatic: true } },
+             SVG: { linebreaks: { automatic: true } }
+    });
+  </script>
+  
+</head>
+<body>
+
+<div class="header pure-g">
+    <div class="pure-u-1-24 pure-u-md-5-24"></div>
+    <div class="pure-u-11-12 pure-u-md-5-8">
+        <div class="desktop pure-menu pure-menu-horizontal nav-menu">
+            
+            <a href="http://example.org" class="site-title pure-menu-heading">Notes</a>
+            <ul class="pure-menu-list">
+				
+                <li class="pure-menu-item">
+                    <a href="http://example.orgabout/" class="pure-menu-link">About</a>
+                </li>
+            </ul>
+        </div>
+        <div class="mobile pure-menu nav-menu">
+            <a href="/" class="pure-menu-heading" id="toggle-home">Notes</a>
+            <a href="#" id="toggle-btn">&#9776;</a>
+            <ul class="pure-menu-list" id="toggle-content" style="display:none;">
+                
+				
+                <li class="pure-menu-item">
+                    <a href="http://example.orgabout" class="pure-menu-link">About</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="pure-u-1-24 pure-u-md-1-6"></div>
+</div>
+
+<div class="pure-g">
+    <div class="pure-u-1-24 pure-u-md-5-24"></div>
+	<div class="pure-u-11-12 pure-u-md-5-8">
+        <div class="post">
+
+            <div class="post-title">
+                <p class="footnote">
+                    <time class="">0001-01-01</time>
+		            
+                    
+                    
+
+                    
+
+                    
+                </p>
+                <h1></h1>
+            </div>
+
+            <div class="post-content">
+                <pre><code class="language-python">import pandas as pd
+
+destinations = pd.read_csv(&quot;../data/destinations.csv&quot;)
+test = pd.read_csv(&quot;../data/test.csv&quot;)
+train = pd.read_csv(&quot;../data/train.csv&quot;)
+</code></pre>
+
+<pre><code class="language-python">train.shape
+</code></pre>
+
+<pre><code>(37670293, 24)
+</code></pre>
+
+<pre><code class="language-python">test.shape
+</code></pre>
+
+<pre><code>(2528243, 22)
+</code></pre>
+
+<pre><code class="language-python">train.head(5)
+</code></pre>
+
+<div>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>date_time</th>
+      <th>site_name</th>
+      <th>posa_continent</th>
+      <th>user_location_country</th>
+      <th>user_location_region</th>
+      <th>user_location_city</th>
+      <th>orig_destination_distance</th>
+      <th>user_id</th>
+      <th>is_mobile</th>
+      <th>is_package</th>
+      <th>...</th>
+      <th>srch_children_cnt</th>
+      <th>srch_rm_cnt</th>
+      <th>srch_destination_id</th>
+      <th>srch_destination_type_id</th>
+      <th>is_booking</th>
+      <th>cnt</th>
+      <th>hotel_continent</th>
+      <th>hotel_country</th>
+      <th>hotel_market</th>
+      <th>hotel_cluster</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2014-08-11 07:46:59</td>
+      <td>2</td>
+      <td>3</td>
+      <td>66</td>
+      <td>348</td>
+      <td>48862</td>
+      <td>2234.2641</td>
+      <td>12</td>
+      <td>0</td>
+      <td>1</td>
+      <td>...</td>
+      <td>0</td>
+      <td>1</td>
+      <td>8250</td>
+      <td>1</td>
+      <td>0</td>
+      <td>3</td>
+      <td>2</td>
+      <td>50</td>
+      <td>628</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2014-08-11 08:22:12</td>
+      <td>2</td>
+      <td>3</td>
+      <td>66</td>
+      <td>348</td>
+      <td>48862</td>
+      <td>2234.2641</td>
+      <td>12</td>
+      <td>0</td>
+      <td>1</td>
+      <td>...</td>
+      <td>0</td>
+      <td>1</td>
+      <td>8250</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>2</td>
+      <td>50</td>
+      <td>628</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2014-08-11 08:24:33</td>
+      <td>2</td>
+      <td>3</td>
+      <td>66</td>
+      <td>348</td>
+      <td>48862</td>
+      <td>2234.2641</td>
+      <td>12</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>1</td>
+      <td>8250</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>2</td>
+      <td>50</td>
+      <td>628</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2014-08-09 18:05:16</td>
+      <td>2</td>
+      <td>3</td>
+      <td>66</td>
+      <td>442</td>
+      <td>35390</td>
+      <td>913.1932</td>
+      <td>93</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>1</td>
+      <td>14984</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>2</td>
+      <td>50</td>
+      <td>1457</td>
+      <td>80</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2014-08-09 18:08:18</td>
+      <td>2</td>
+      <td>3</td>
+      <td>66</td>
+      <td>442</td>
+      <td>35390</td>
+      <td>913.6259</td>
+      <td>93</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>1</td>
+      <td>14984</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>2</td>
+      <td>50</td>
+      <td>1457</td>
+      <td>21</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 24 columns</p>
+</div>
+
+<pre><code class="language-python">test.head(5)
+</code></pre>
+
+<div>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>date_time</th>
+      <th>site_name</th>
+      <th>posa_continent</th>
+      <th>user_location_country</th>
+      <th>user_location_region</th>
+      <th>user_location_city</th>
+      <th>orig_destination_distance</th>
+      <th>user_id</th>
+      <th>is_mobile</th>
+      <th>...</th>
+      <th>srch_ci</th>
+      <th>srch_co</th>
+      <th>srch_adults_cnt</th>
+      <th>srch_children_cnt</th>
+      <th>srch_rm_cnt</th>
+      <th>srch_destination_id</th>
+      <th>srch_destination_type_id</th>
+      <th>hotel_continent</th>
+      <th>hotel_country</th>
+      <th>hotel_market</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>2015-09-03 17:09:54</td>
+      <td>2</td>
+      <td>3</td>
+      <td>66</td>
+      <td>174</td>
+      <td>37449</td>
+      <td>5539.0567</td>
+      <td>1</td>
+      <td>1</td>
+      <td>...</td>
+      <td>2016-05-19</td>
+      <td>2016-05-23</td>
+      <td>2</td>
+      <td>0</td>
+      <td>1</td>
+      <td>12243</td>
+      <td>6</td>
+      <td>6</td>
+      <td>204</td>
+      <td>27</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>2015-09-24 17:38:35</td>
+      <td>2</td>
+      <td>3</td>
+      <td>66</td>
+      <td>174</td>
+      <td>37449</td>
+      <td>5873.2923</td>
+      <td>1</td>
+      <td>1</td>
+      <td>...</td>
+      <td>2016-05-12</td>
+      <td>2016-05-15</td>
+      <td>2</td>
+      <td>0</td>
+      <td>1</td>
+      <td>14474</td>
+      <td>7</td>
+      <td>6</td>
+      <td>204</td>
+      <td>1540</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2</td>
+      <td>2015-06-07 15:53:02</td>
+      <td>2</td>
+      <td>3</td>
+      <td>66</td>
+      <td>142</td>
+      <td>17440</td>
+      <td>3975.9776</td>
+      <td>20</td>
+      <td>0</td>
+      <td>...</td>
+      <td>2015-07-26</td>
+      <td>2015-07-27</td>
+      <td>4</td>
+      <td>0</td>
+      <td>1</td>
+      <td>11353</td>
+      <td>1</td>
+      <td>2</td>
+      <td>50</td>
+      <td>699</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>3</td>
+      <td>2015-09-14 14:49:10</td>
+      <td>2</td>
+      <td>3</td>
+      <td>66</td>
+      <td>258</td>
+      <td>34156</td>
+      <td>1508.5975</td>
+      <td>28</td>
+      <td>0</td>
+      <td>...</td>
+      <td>2015-09-14</td>
+      <td>2015-09-16</td>
+      <td>2</td>
+      <td>0</td>
+      <td>1</td>
+      <td>8250</td>
+      <td>1</td>
+      <td>2</td>
+      <td>50</td>
+      <td>628</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>4</td>
+      <td>2015-07-17 09:32:04</td>
+      <td>2</td>
+      <td>3</td>
+      <td>66</td>
+      <td>467</td>
+      <td>36345</td>
+      <td>66.7913</td>
+      <td>50</td>
+      <td>0</td>
+      <td>...</td>
+      <td>2015-07-22</td>
+      <td>2015-07-23</td>
+      <td>2</td>
+      <td>0</td>
+      <td>1</td>
+      <td>11812</td>
+      <td>1</td>
+      <td>2</td>
+      <td>50</td>
+      <td>538</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 22 columns</p>
+</div>
+
+<pre><code class="language-python">train[&quot;hotel_cluster&quot;].value_counts()
+</code></pre>
+
+<pre><code>91    1043720
+41     772743
+48     754033
+64     704734
+65     670960
+5      620194
+98     589178
+59     570291
+42     551605
+21     550092
+70     545572
+18     545284
+83     534132
+46     534038
+25     530591
+62     518809
+95     509266
+28     507016
+68     503797
+82     503755
+37     496061
+50     489892
+30     489287
+9      488328
+58     483253
+97     479446
+16     477868
+72     457463
+1      452694
+99     444887
+       ...   
+19     282893
+84     278264
+66     273505
+38     269246
+87     260398
+23     259233
+12     259022
+31     257587
+67     255946
+43     253578
+7      252447
+54     250745
+92     244343
+89     243560
+45     241408
+49     240124
+3      225250
+80     220218
+60     217919
+71     216054
+93     214293
+86     209054
+14     192299
+75     165226
+24     164127
+35     139122
+53     134812
+88     107784
+27     105040
+74      48355
+Name: hotel_cluster, dtype: int64
+</code></pre>
+
+<pre><code class="language-python">test.columns
+</code></pre>
+
+<pre><code>Index([u'id', u'date_time', u'site_name', u'posa_continent',
+       u'user_location_country', u'user_location_region',
+       u'user_location_city', u'orig_destination_distance', u'user_id',
+       u'is_mobile', u'is_package', u'channel', u'srch_ci', u'srch_co',
+       u'srch_adults_cnt', u'srch_children_cnt', u'srch_rm_cnt',
+       u'srch_destination_id', u'srch_destination_type_id', u'hotel_continent',
+       u'hotel_country', u'hotel_market'],
+      dtype='object')
+</code></pre>
+
+<pre><code class="language-python">train.dtypes
+</code></pre>
+
+<pre><code>date_time                     object
+site_name                      int64
+posa_continent                 int64
+user_location_country          int64
+user_location_region           int64
+user_location_city             int64
+orig_destination_distance    float64
+user_id                        int64
+is_mobile                      int64
+is_package                     int64
+channel                        int64
+srch_ci                       object
+srch_co                       object
+srch_adults_cnt                int64
+srch_children_cnt              int64
+srch_rm_cnt                    int64
+srch_destination_id            int64
+srch_destination_type_id       int64
+is_booking                     int64
+cnt                            int64
+hotel_continent                int64
+hotel_country                  int64
+hotel_market                   int64
+hotel_cluster                  int64
+dtype: object
+</code></pre>
+
+<pre><code class="language-python">test.dtypes
+</code></pre>
+
+<pre><code>id                             int64
+date_time                     object
+site_name                      int64
+posa_continent                 int64
+user_location_country          int64
+user_location_region           int64
+user_location_city             int64
+orig_destination_distance    float64
+user_id                        int64
+is_mobile                      int64
+is_package                     int64
+channel                        int64
+srch_ci                       object
+srch_co                       object
+srch_adults_cnt                int64
+srch_children_cnt              int64
+srch_rm_cnt                    int64
+srch_destination_id            int64
+srch_destination_type_id       int64
+hotel_continent                int64
+hotel_country                  int64
+hotel_market                   int64
+dtype: object
+</code></pre>
+
+<pre><code class="language-python">test_ids = set(test.user_id.unique())
+</code></pre>
+
+<pre><code class="language-python">train_ids = set(train.user_id.unique())
+</code></pre>
+
+<pre><code class="language-python">intersection_count = len(test_ids &amp; train_ids)
+</code></pre>
+
+<pre><code class="language-python">intersection_count == len(test_ids)
+</code></pre>
+
+<pre><code>True
+</code></pre>
+
+<pre><code class="language-python">train[&quot;date_time&quot;] = pd.to_datetime(train[&quot;date_time&quot;])
+</code></pre>
+
+<pre><code class="language-python">train[&quot;date_time&quot;].head()
+</code></pre>
+
+<pre><code>0   2014-08-11 07:46:59
+1   2014-08-11 08:22:12
+2   2014-08-11 08:24:33
+3   2014-08-09 18:05:16
+4   2014-08-09 18:08:18
+Name: date_time, dtype: datetime64[ns]
+</code></pre>
+
+<pre><code class="language-python">train[&quot;year&quot;] = train[&quot;date_time&quot;].dt.year
+</code></pre>
+
+<pre><code class="language-python">train[&quot;month&quot;] = train[&quot;date_time&quot;].dt.month
+</code></pre>
+
+<pre><code class="language-python">import random
+
+unique_users = train.user_id.unique()
+</code></pre>
+
+<pre><code class="language-python">sel_user_ids = [unique_users[i] for i in sorted(random.sample(range(len(unique_users)), 10000))]
+sel_train = train[train.user_id.isin(sel_user_ids)]
+
+</code></pre>
+
+<pre><code class="language-python">t1 = sel_train[((sel_train.year == 2013) | ((sel_train.year == 2014) &amp; (sel_train.month &lt; 8)))]
+t2 = sel_train[((sel_train.year == 2014) &amp; (sel_train.month &gt;= 8))]
+</code></pre>
+
+<pre><code class="language-python">t1.shape
+</code></pre>
+
+<pre><code>(198218, 26)
+</code></pre>
+
+<pre><code class="language-python">t2.shape
+</code></pre>
+
+<pre><code>(115636, 27)
+</code></pre>
+
+<pre><code class="language-python">len(sel_user_ids)
+</code></pre>
+
+<pre><code>10000
+</code></pre>
+
+<pre><code class="language-python">t2 = t2[t2.is_booking == True]
+</code></pre>
+
+<pre><code class="language-python">most_common_clusters = list(train.hotel_cluster.value_counts().head().index)
+</code></pre>
+
+<pre><code class="language-python">train.hotel_cluster.value_counts().head(10)
+</code></pre>
+
+<pre><code>91    1043720
+41     772743
+48     754033
+64     704734
+65     670960
+5      620194
+98     589178
+59     570291
+42     551605
+21     550092
+Name: hotel_cluster, dtype: int64
+</code></pre>
+
+<pre><code class="language-python">train.hotel_cluster.value_counts().head(10).index
+</code></pre>
+
+<pre><code>Int64Index([91, 41, 48, 64, 65, 5, 98, 59, 42, 21], dtype='int64')
+</code></pre>
+
+<pre><code class="language-python">predictions = [most_common_clusters for i in range(t2.shape[0])]
+</code></pre>
+
+<pre><code class="language-python">import ml_metrics as metrics
+target = [[l] for l in t2[&quot;hotel_cluster&quot;]]
+metrics.mapk(target, predictions, k = 5)
+</code></pre>
+
+<pre><code>0.066330720418066424
+</code></pre>
+
+<pre><code class="language-python">train.corr()[&quot;hotel_cluster&quot;]
+</code></pre>
+
+<pre><code>site_name                   -0.022408
+posa_continent               0.014938
+user_location_country       -0.010477
+user_location_region         0.007453
+user_location_city           0.000831
+orig_destination_distance    0.007260
+user_id                      0.001052
+is_mobile                    0.008412
+is_package                   0.038733
+channel                      0.000707
+srch_adults_cnt              0.012309
+srch_children_cnt            0.016261
+srch_rm_cnt                 -0.005954
+srch_destination_id         -0.011712
+srch_destination_type_id    -0.032850
+is_booking                  -0.021548
+cnt                          0.002944
+hotel_continent             -0.013963
+hotel_country               -0.024289
+hotel_market                 0.034205
+hotel_cluster                1.000000
+year                        -0.001050
+month                       -0.000560
+Name: hotel_cluster, dtype: float64
+</code></pre>
+
+<pre><code class="language-python">destinations.shape
+</code></pre>
+
+<pre><code>(62106, 150)
+</code></pre>
+
+<pre><code class="language-python">destinations.head()
+</code></pre>
+
+<div>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>srch_destination_id</th>
+      <th>d1</th>
+      <th>d2</th>
+      <th>d3</th>
+      <th>d4</th>
+      <th>d5</th>
+      <th>d6</th>
+      <th>d7</th>
+      <th>d8</th>
+      <th>d9</th>
+      <th>...</th>
+      <th>d140</th>
+      <th>d141</th>
+      <th>d142</th>
+      <th>d143</th>
+      <th>d144</th>
+      <th>d145</th>
+      <th>d146</th>
+      <th>d147</th>
+      <th>d148</th>
+      <th>d149</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>-2.198657</td>
+      <td>-2.198657</td>
+      <td>-2.198657</td>
+      <td>-2.198657</td>
+      <td>-2.198657</td>
+      <td>-1.897627</td>
+      <td>-2.198657</td>
+      <td>-2.198657</td>
+      <td>-1.897627</td>
+      <td>...</td>
+      <td>-2.198657</td>
+      <td>-2.198657</td>
+      <td>-2.198657</td>
+      <td>-2.198657</td>
+      <td>-2.198657</td>
+      <td>-2.198657</td>
+      <td>-2.198657</td>
+      <td>-2.198657</td>
+      <td>-2.198657</td>
+      <td>-2.198657</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>-2.181690</td>
+      <td>-2.181690</td>
+      <td>-2.181690</td>
+      <td>-2.082564</td>
+      <td>-2.181690</td>
+      <td>-2.165028</td>
+      <td>-2.181690</td>
+      <td>-2.181690</td>
+      <td>-2.031597</td>
+      <td>...</td>
+      <td>-2.165028</td>
+      <td>-2.181690</td>
+      <td>-2.165028</td>
+      <td>-2.181690</td>
+      <td>-2.181690</td>
+      <td>-2.165028</td>
+      <td>-2.181690</td>
+      <td>-2.181690</td>
+      <td>-2.181690</td>
+      <td>-2.181690</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2</td>
+      <td>-2.183490</td>
+      <td>-2.224164</td>
+      <td>-2.224164</td>
+      <td>-2.189562</td>
+      <td>-2.105819</td>
+      <td>-2.075407</td>
+      <td>-2.224164</td>
+      <td>-2.118483</td>
+      <td>-2.140393</td>
+      <td>...</td>
+      <td>-2.224164</td>
+      <td>-2.224164</td>
+      <td>-2.196379</td>
+      <td>-2.224164</td>
+      <td>-2.192009</td>
+      <td>-2.224164</td>
+      <td>-2.224164</td>
+      <td>-2.224164</td>
+      <td>-2.224164</td>
+      <td>-2.057548</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>3</td>
+      <td>-2.177409</td>
+      <td>-2.177409</td>
+      <td>-2.177409</td>
+      <td>-2.177409</td>
+      <td>-2.177409</td>
+      <td>-2.115485</td>
+      <td>-2.177409</td>
+      <td>-2.177409</td>
+      <td>-2.177409</td>
+      <td>...</td>
+      <td>-2.161081</td>
+      <td>-2.177409</td>
+      <td>-2.177409</td>
+      <td>-2.177409</td>
+      <td>-2.177409</td>
+      <td>-2.177409</td>
+      <td>-2.177409</td>
+      <td>-2.177409</td>
+      <td>-2.177409</td>
+      <td>-2.177409</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>4</td>
+      <td>-2.189562</td>
+      <td>-2.187783</td>
+      <td>-2.194008</td>
+      <td>-2.171153</td>
+      <td>-2.152303</td>
+      <td>-2.056618</td>
+      <td>-2.194008</td>
+      <td>-2.194008</td>
+      <td>-2.145911</td>
+      <td>...</td>
+      <td>-2.187356</td>
+      <td>-2.194008</td>
+      <td>-2.191779</td>
+      <td>-2.194008</td>
+      <td>-2.194008</td>
+      <td>-2.185161</td>
+      <td>-2.194008</td>
+      <td>-2.194008</td>
+      <td>-2.194008</td>
+      <td>-2.188037</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 150 columns</p>
+</div>
+
+<pre><code class="language-python">x = [&quot;d{0}&quot;.format(i + 1) for i in range(149)]
+</code></pre>
+
+<pre><code class="language-python">
+</code></pre>
+
+<pre><code class="language-python">from sklearn.decomposition import PCA
+
+pca = PCA(n_components = 3)
+dest_small = pca.fit_transform(destinations[[&quot;d{0}&quot;.format(i + 1) for i in range(149)]])
+dest_small = pd.DataFrame(dest_small)
+dest_small[&quot;srch_destination_id&quot;] = destinations[&quot;srch_destination_id&quot;]
+</code></pre>
+
+<pre><code>/Users/uyen/.local/lib/python2.7/site-packages/sklearn/utils/extmath.py:368: UserWarning: The number of power iterations is increased to 7 to achieve higher precision.
+  warnings.warn(&quot;The number of power iterations is increased to &quot;
+</code></pre>
+
+<pre><code class="language-python">dest_small.head()
+</code></pre>
+
+<div>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0</th>
+      <th>1</th>
+      <th>2</th>
+      <th>srch_destination_id</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>-0.044268</td>
+      <td>0.169419</td>
+      <td>0.032523</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>-0.440761</td>
+      <td>0.077405</td>
+      <td>-0.091572</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.001033</td>
+      <td>0.020677</td>
+      <td>0.012108</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>-0.480467</td>
+      <td>-0.040345</td>
+      <td>-0.019320</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>-0.207253</td>
+      <td>-0.042694</td>
+      <td>-0.011744</td>
+      <td>4</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<pre><code class="language-python">def cal_fast_features(df):
+    df[&quot;date_time&quot;] = pd.to_datetime(df[&quot;date_time&quot;])
+    df[&quot;srch_ci&quot;] = pd.to_datetime(df[&quot;srch_ci&quot;], format = '%Y-%md-%d', errors = &quot;coerce&quot;)
+    df[&quot;srch_co&quot;] = pd.to_datetime(df[&quot;srch_co&quot;], format = '%Y-%m-%d', errors = &quot;coerce&quot;)
+    
+    props = {}
+    for prop in [&quot;month&quot;, &quot;day&quot;, &quot;hour&quot;, &quot;minute&quot;, &quot;dayofweek&quot;, &quot;quarter&quot;]:
+        props[prop] = getattr(df[&quot;date_time&quot;].dt, prop)
+        
+    carryover = [p for p in df.columns if p not in [&quot;date_time&quot;, &quot;srch_ci&quot;, &quot;srch_co&quot;]]
+    for prop in carryover:
+        props[prop] = df[prop]
+    
+    date_props = [&quot;month&quot;, &quot;day&quot;, &quot;dayofweek&quot;, &quot;quarter&quot;]
+    
+    for prop in date_props:
+        props[&quot;ci_{0}&quot;.format(prop)] = getattr(df[&quot;srch_ci&quot;].dt, prop)
+        props[&quot;co_{0}&quot;.format(prop)] = getattr(df[&quot;srch_co&quot;].dt, prop)
+    
+    props[&quot;stay_span&quot;] = (df[&quot;srch_co&quot;] - df[&quot;srch_ci&quot;]).astype('timedelta64[h]')
+    
+    ret = pd.DataFrame(props)
+    
+    ret = ret.join(dest_small, on = &quot;srch_destination_id&quot;, how = &quot;left&quot;, rsuffix = &quot;dest&quot;)
+    ret = ret.drop(&quot;srch_destination_iddest&quot;, axis = 1)
+    
+    return ret
+
+df = cal_fast_features(t1)
+df.fillna(-1, inplace = True)
+
+</code></pre>
+
+<pre><code>---------------------------------------------------------------------------
+
+NameError                                 Traceback (most recent call last)
+
+&lt;ipython-input-1-4074dcf6b225&gt; in &lt;module&gt;()
+     27     return ret
+     28 
+---&gt; 29 df = cal_fast_features(t1)
+     30 df.fillna(-1, inplace = True)
+
+
+NameError: name 't1' is not defined
+</code></pre>
+
+            </div>
+        </div>
+	</div>
+    <div class="pure-u-1-24 pure-u-md-1-6"></div>
+</div>
+
+<div class="footer pure-g">
+    <div class="pure-u-1-24 pure-u-md-5-24"></div>
+    <div class="pure-u-11-12 pure-u-md-5-8">
+        <div class="footer-content">
+		  <div class="pure-menu pure-menu-horizontal">
+              <ul>
+			      
+				  
+                  
+          
+                  
+          
+                  
+          
+                  
+          
+                  
+          
+              </ul>
+              <a href="#" class="pure-menu-heading pull-right" id="gototop-btn">↑↑</a>
+          </div>
+		  
+		</div>
+	  </div>
+      <div class="pure-u-1-24 pure-u-md-1-6"></div>
+</div>
+
+
+<script src="http://example.orgjs/jquery.min.js" type="text/javascript"></script>
+<script src="http://example.orgjs/jquery.timeago.js" type="text/javascript"></script>
+<script type="text/javascript">
+  $(function(){
+    $("time.timeago").timeago();
+  })
+  $("#toggle-btn").click(function(){
+    $("#toggle-content").toggle();
+    if($(this).html() === "☰") {
+        $(this).html("X")
+    } else {
+        $(this).html("☰")
+    }
+  });
+  $(window).resize(function(){
+    if(window.innerWidth > 768) {
+      $(".desktop").removeAttr("style");
+    }
+  });
+</script>
+
+</body>
+</html>
+
