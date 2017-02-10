@@ -4,8 +4,8 @@
 
   
   <meta charset="utf-8">
-  <title>Python notes</title>
-  <meta name="description" content="Python notes">
+  <title>Python module and package</title>
+  <meta name="description" content="Python module and package">
   <meta name="author" content="">
 
   
@@ -100,51 +100,83 @@
                     
 
                     
-                    categories:<a href="https://uyenhoang.github.io/site/categories/misc">misc</a> 
+                    categories:<a href="https://uyenhoang.github.io/site/categories/python">Python</a> 
                     
 
                     
                 </p>
-                <h1>Python notes</h1>
+                <h1>Python module and package</h1>
             </div>
 
             <div class="post-content">
                 
 
+<p>I recently started reading, <code>A byte of python</code>, and found it a very helpful guide to the language for a beginner. The book was well-written, and explained most of important concepts in simple terms with self evident examples to follow. Thus, it made learning Python simple and interesting.</p>
+
+<p>As a R programmer, I found that those sections such as modules, data structures and OOP are important to understand the basic building blocks of Python and how to make connection with the language that I&rsquo;m more familiar with.</p>
+
+<p>In this blog, I&rsquo;m going to focus on the concept of modules and packages in Python.</p>
+
 <h1 id="modules">Modules</h1>
 
-<p>Writing a module to reuse a number of functions in other programs. The simplest way of writing a module is to create a file with a <code>.py</code> extension that contains functions and variables. Another method is to write the modules in the native language in which the Python interpreter was written, when compiled, they can be used from Python code when using the standard Python interpreter.</p>
+<p>The purpose of writing a module is to reuse a number of functions in other programs. There are several ways to create a module. The simplest way is to create a file with a <code>.py</code> extension that contains functions and variables. Another method is to write the modules in the native language in which the Python interpreter was written, when compiled, they can be used from Python code when using the standard Python interpreter.</p>
 
-<p>Example:</p>
+<p>Example (save as module_using_sys.py):</p>
 
-<pre><code>import sys
+<pre><code class="language-python">import sys
 
-#To specify command line arguments to the program in IDE.
-try: 
-    __file__
-except:
-    sys.argv = [sys.argv, 'wordcount.py', '--count', 'small.txt']
 print('The command line arguments are:')
 for i in sys.argv:
     print(i)
 
-The command line arguments are:
-['/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/ipykernel/__main__.py', '-f']
-wordcount.py
---count
-small.txt
+print('\n\nThe PYTHONPATH is', sys.path, '\n')
 
 </code></pre>
+
+<p>Output:</p>
+
+<pre><code class="language-terminal">$ python module_using_sys.py we are arguments
+The command line arguments are:
+module_using_sys.py
+we
+are
+arguments
+
+
+The PYTHONPATH is ['/tmp/python', 
+# many entries are not show here 
+'/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages'] 
+</code></pre>
+
+<p>To specify command line arguments to the program in IDE, you can use <code>try ... except</code> statement. For the previous example, you can execute the following lines before <code>print</code> command and the for loop.</p>
+
+<pre><code class="language-python">try: 
+    __file__
+except:
+    sys.argv = [sys.argv, 'we', 'are', 'arguments']
+</code></pre>
+
+<p>Note that the current directory is the directory from which the program is launched. Run <code>import os; print(os.getcwd())</code> to find out the current directory of your program.</p>
 
 <h1 id="byte-compiled-pyc-files">Byte-compiled .pyc files</h1>
 
 <p>Python creates byte-compiled files with the extension <code>.pyc</code> to make importing a module from another program faster since portion of the processing required in importing a module is already done. Also, these byte-compiled files are platform-independent.</p>
 
+<p>NOTE: These <code>.pyc</code> files are usually created in the same directory as the corresponding <code>.pyc</code> files. If Python does not have permission to write to files in that directory, then the <code>.pyc</code> files will not be created.</p>
+
+<h1 id="the-from-import-statement">The from &hellip; import statement</h1>
+
+<p>To avoid typing the <code>module_name.function_name</code> or <code>moduel_name.variable_name</code>, you can use the <code>from moduel_name import function_name</code>.</p>
+
+<p>WARNING: To avoid name classes, avoid using the <code>from ... import</code> statement</p>
+
 <h1 id="a-module-s-name-version">A module&rsquo;s <code>__name__</code>, <code>__version__</code></h1>
 
-<p>Example:</p>
+<p>Every Python module has its <code>__name__</code> defined. If it is <code>__main__</code>, that implies that the module is being run standalone by the user. It&rsquo;s common practice for each module to declare its version number using <code>__version__</code></p>
 
-<pre><code>if __name__ == '__main__':
+<p>Example (save as module_using_name.py):</p>
+
+<pre><code class="language-python">if __name__ == '__main__':
 	print('This program is being run by itself')
 
 else:
@@ -152,15 +184,61 @@ else:
 
 </code></pre>
 
-<h3 id="how-it-works">How it works:</h3>
+<p>Output:</p>
 
-<p>Every Python module has its <code>__name__</code> defined. If this is <code>__main__</code>, that implies that the module is being run standalone by the user. It&rsquo;s common practice for each module to declare it&rsquo;s version number using <code>__version__</code></p>
+<pre><code class="language-python">$ python module_using_name.py
+This program is being run by itself
+
+$ python
+&gt;&gt;&gt; import module_using_name
+I am being imported from another module
+</code></pre>
+
+<p>An example of making my own modules:</p>
+
+<p>Example (myunit.py):</p>
+
+<pre><code class="language-python">def scale(x):
+	&quot;&quot;&quot;To transform a list of number to 0-1 scale.&quot;&quot;&quot;
+    new_x = [(v - min(x))/(max(x) - min(x)) for v in x]
+    return new_x
+__version__ = '0.1'
+</code></pre>
+
+<p>Output:</p>
+
+<pre><code class="language-python">import myunit
+
+xs = list(range(1,6))
+myunit.scale(xs)
+</code></pre>
+
+<pre><code>[0.0, 0.25, 0.5, 0.75, 1.0]
+</code></pre>
+
+<pre><code class="language-python">print('Version', myunit.__version__)
+</code></pre>
+
+<pre><code>Version 0.1
+</code></pre>
+
+<pre><code class="language-python">print('what does myunit.scale() does:', myunit.scale.__doc__)
+</code></pre>
+
+<pre><code>what does myunit.scale() does: To transform a list of number to 0-1 scale.
+</code></pre>
+
+<p>In the above example, I also used docstring, a multi-line string to document the program and makes it easier to understand. You can access the docstring of the function by <code>__doc__</code></p>
 
 <h1 id="the-dir-function">The <code>dir</code> function</h1>
 
+<p>The <code>dir</code> function returns a list of attributes that the specified module contains. By default, it returns the list of attributes for the current module without any arguments is passed.</p>
+
+<p>A note on <code>del</code> - this statement is used to delete a variable/name and after statement has run, in this case <code>del a</code>, completely remove <code>a</code> from the current Python environment.</p>
+
 <p>Example:</p>
 
-<pre><code>$ python
+<pre><code class="language-python">$ python
 &gt;&gt;&gt; import sys
 
 # get names of attributes in sys module
@@ -189,15 +267,32 @@ else:
 
 </code></pre>
 
-<h3 id="how-it-works-1">How it works:</h3>
+<h1 id="packages">Packages</h1>
 
-<p>The <code>dir</code> function returns a list of attributes that the specified module contains. By default, it returns the list of attributes for the current module without any arguments is passed.</p>
-
-<p>A note on <code>del</code> - this statement is used to delete a variable/name and after statement has run, in this case <code>del a</code>, completely remove <code>a</code> from the current Python environment.</p>
-
-<h1 id="data-structures">Data structures</h1>
+<p>Packages are just folders of modules with a special <code>__init__.py</code> file that indicates to Python that this folder is special because it contains Python modules.</p>
 
 <p>Example:</p>
+
+<blockquote>
+<p>Let&rsquo;s say we want to create a package called &lsquo;world&rsquo; with subpackages &lsquo;asia&rsquo;, &lsquo;africa&rsquo;, etc. and these subpackages in turn contain modules like &lsquo;india&rsquo;, &lsquo;madagascar&rsquo;, etc.</p>
+</blockquote>
+
+<p>This is how the structure of the folders should look:</p>
+
+<pre><code class="language-html">- &lt;some folder present in the sys.path&gt;/
+    - world/
+        - __init__.py
+        - asia/
+            - __init__.py
+            - india/
+                - __init__.py
+                - foo.py
+        - africa/
+            - __init__.py
+            - madagascar/
+                - __init__.py
+                - bar.py
+</code></pre>
 
             </div>
         </div>
